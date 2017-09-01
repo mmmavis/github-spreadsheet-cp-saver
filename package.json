@@ -1,7 +1,8 @@
 {
-  "name": "github-tix-manager",
+  "name": "github-spreadsheet-cp-saver",
   "version": "1.0.0",
-  "description": "Simple node app for helping myself quickly run node script locally.",
+  "description": "GitHub <-> Spreadsheet Cmd-C(Ctrl-C) Cmd-V(Ctrl-C) Saver",
+  "repository": "https://github.com/mmmavis/github-spreadsheet-cp-saver",
   "main": "app.js",
   "scripts": {
     "app": "node dist/app.js",
