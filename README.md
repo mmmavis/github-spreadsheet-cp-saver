@@ -2,12 +2,17 @@
 
 These scripts are designed to save a ton of search and copy-and-paste work for the MozFest 2017 Program Team.
 
-**Working in progress** and docs to be added soon...
-
+🔺🔺🔺 **Working in progress** and docs to be added soon... 🔺🔺🔺
 
 ## Caution!
 
-Use these scripts at your own risk as there's no test script conducted to make sure things always work as expected. :wink:
+Use these scripts at your own risk as there's no test script conducted to verify things always work as expected.:wink:
+
+### Current Available Scripts
+
+1. Get standard rejected proposals
+2. Get flagged rejected proposals
+3. Auto comment and close all unsuccessful proposals
 
 ### Requirements for Development
 
