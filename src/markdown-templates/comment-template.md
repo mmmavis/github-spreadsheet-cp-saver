@@ -1,4 +1,3 @@
 ### TEST 
-<%= testMessage %>
+<%= message %>
 
-<% if (typeof(secondarySpace) !== "undefined") { %>**[ Secondary Space ]** <%= secondarySpace %><% } %>

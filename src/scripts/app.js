@@ -24,7 +24,7 @@ const SCRIPT_OPTIONS = [
   },
   {
     // Open issues with no milestone
-    title: `Auto comment and close unsuccessful submissions (WARNING: script will start right away)`, 
+    title: `Auto comment and close all unsuccessful proposals (WARNING: script will start right away)`, 
     funcToRun: commentAndCloseProposals
   }
 ];

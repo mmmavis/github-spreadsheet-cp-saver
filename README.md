@@ -31,4 +31,4 @@ Use these scripts at your own risk as there's no test script conducted to verify
 ### To Run the Scripts
 
 - `node run build`
-- `node dist/app.js` to bring up the script selection menu
+- `node dist/app.js` to bring up the script selection menu in terminal

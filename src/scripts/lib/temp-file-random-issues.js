@@ -43,9 +43,12 @@ function postToGithub(method = `POST`, route, content, callback) {
 }
 
 function postRandomIssues() {
-  for (let i=4; i<=6; i++) {
+  let randomTitles = `cake lollipop wafer soufflé toffee tiramisu brownie pudding cake chocolate bar macaroon gummies cheesecake marshmallow croissant`;
+  randomTitles = randomTitles.split(` `);
+
+  for (let i=1; i<=5; i++) {
     let issue = {
-      title: `Test issue ${i}`,
+      title: randomTitles[Math.floor(Math.random()*randomTitles.length)],
       body: ``
     };
     postToGithub(`POST`, `repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues`, issue, (error, body) => {
@@ -60,7 +63,7 @@ function formatGithubComment() {
   var template = _.template(fs.readFileSync(pathToTemplate,`utf-8`));
 
   var comment = {
-    testMessage: `Hello World`
+    message: `Hello World`
   };
 
   return { body: template(comment) };
@@ -83,7 +86,7 @@ function closeIssue(issueNum) {
     });
 }
 
-// postRandomIssues();
+postRandomIssues();
 // postComment();
 
-closeIssue(2);
+// closeIssue(2);
