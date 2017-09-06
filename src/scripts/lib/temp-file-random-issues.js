@@ -63,7 +63,7 @@ function formatGithubComment() {
   var template = _.template(fs.readFileSync(pathToTemplate,`utf-8`));
 
   var comment = {
-    message: `Hello World`
+    additionalMessage: `Hello World`
   };
 
   return { body: template(comment) };

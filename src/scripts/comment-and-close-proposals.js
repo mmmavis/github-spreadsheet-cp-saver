@@ -8,7 +8,7 @@ function formatGithubComment() {
   let template = _.template(fs.readFileSync(pathToTemplate,`utf-8`));
 
   let data = {
-    message: `Today is Fridayyy`
+    additionalMessage: ``
   };
 
   return { body: template(data) };
