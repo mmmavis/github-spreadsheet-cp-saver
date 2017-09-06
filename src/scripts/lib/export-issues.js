@@ -23,9 +23,10 @@ export default function(githubOwner, githubRepo, searchQualifiers, cb) {
   // https://developer.github.com/v3/search/#search-issues
 
   GithubApiHelper.search(`issues`, { q: searchQualifiers.join(` `) }, (error, issues, endpointInfo) => {
-    let githubIssueIds = issues.map(issue => issue.number);
+    // GitHub template: **[ UUID ]** __uuid__
+    let uuids = issues.map(issue => issue.body.split(`\n`)[0].replace(`[ UUID ]`, ``).replace(/\*/g, ``).trim());
 
-    searchGoogleSpreadsheet(githubIssueIds, (sheetError, matchedRows) => {
+    searchGoogleSpreadsheet(uuids, (sheetError, matchedRows) => {
       if (sheetError) console.log(`sheetError`, sheetError);
 
       let report = {

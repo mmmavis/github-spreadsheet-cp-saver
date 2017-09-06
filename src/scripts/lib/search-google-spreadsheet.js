@@ -8,7 +8,7 @@ const GOOGLE_API_CLIENT_EMAIL = habitat.get(`GOOGLE_API_CLIENT_EMAIL`);
 const GOOGLE_API_PRIVATE_KEY = habitat.get(`GOOGLE_API_PRIVATE_KEY`);
 const GOOGLE_API_SPREADSHEET_ID = habitat.get(`GOOGLE_API_SPREADSHEET_ID`);
 
-export default function(githubIssueIds, callback) {
+export default function(uuids, callback) {
   var sheet = new GoogleSpreadsheet(GOOGLE_API_SPREADSHEET_ID);
 
   // line breaks are essential for the private key.
@@ -29,7 +29,7 @@ export default function(githubIssueIds, callback) {
       }
 
       let matchedRows = rows.filter(row => {
-        return githubIssueIds.indexOf(parseInt(row.githubissuenumber)) > -1;
+        return uuids.indexOf(row.uuid) > -1;
       }).map(row => {
         return {
           firstname: row.firstname,
