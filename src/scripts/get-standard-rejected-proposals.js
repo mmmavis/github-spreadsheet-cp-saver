@@ -10,7 +10,7 @@ export default function(githubOwner, githubRepo, cb) {
     `is:open`,
     `no:milestone`,
     `-label:"[Production] Flagged"`,
-    `author:mmmavis`
+    `author:mozfest-bot`
   ];
 
   exportIssues(githubOwner, githubRepo, SEARCH_QUALIFIERS, () => {

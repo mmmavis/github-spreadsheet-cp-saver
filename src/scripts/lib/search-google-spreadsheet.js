@@ -33,7 +33,7 @@ export default function(uuids, callback) {
       }).map(row => {
         return {
           firstname: row.firstname,
-          surname: row.firstname,
+          surname: row.surname,
           email: row.email,
           name: row.name,
           githubissuenumber: row.githubissuenumber

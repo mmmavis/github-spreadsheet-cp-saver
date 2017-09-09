@@ -31,7 +31,8 @@ export default function(githubOwner, githubRepo, cb) {
   const SEARCH_QUALIFIERS = [
     `repo:${githubOwner}/${githubRepo}`,
     `is:open`,
-    `no:milestone`
+    `no:milestone`,
+    `author:mozfest-bot`
   ];
 
   GithubApiHelper.search(`issues`, { q: SEARCH_QUALIFIERS.join(` `) }, (error, issues, endpointInfo) => {
