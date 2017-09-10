@@ -44,7 +44,7 @@ function traverseWithPagination(endpoint, params, keyToReturn, matchedItems = []
       if (err) {
         callback(err);
       } else if (response.statusCode !== 200 && response.statusCode !== 201) {
-        let errorMsg = `[Error posting to GitHub] Response status HTTP ${response.statusCode}, GitHub error message: ${response.body.message}`;
+        let errorMsg = `[Error posting to GitHub] ${response.request.href} [Response status] HTTP ${response.statusCode}. [Message]: ${response.body.message}`;
         callback(errorMsg);
       } else {
         if (keyToReturn !== `all`) {
@@ -85,7 +85,7 @@ function postToGithub(method = `POST`, route, content, callback) {
       if (err) {
         callback(err);
       } else if (response.statusCode !== 200 && response.statusCode !== 201) {
-        let errorMsg = `[Error posting to GitHub] Response status HTTP ${response.statusCode}, GitHub error message: ${response.body.message}`;
+        let errorMsg = `[Error posting to GitHub] ${response.request.href} [Response status] HTTP ${response.statusCode}. [Message]: ${response.body.message}`;
         callback(errorMsg);
       } else {
         callback(null, body);
