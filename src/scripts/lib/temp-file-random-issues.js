@@ -3,6 +3,7 @@ import request from 'request';
 import path from 'path';
 import _ from 'underscore';
 import fs from 'fs';
+import moment from 'moment';
 
 habitat.load(`.env`);
 habitat.load(`defaults.env`);
@@ -42,20 +43,38 @@ function postToGithub(method = `POST`, route, content, callback) {
   );
 }
 
-function postRandomIssues() {
-  let randomTitles = `cake lollipop wafer soufflé toffee tiramisu brownie pudding cake chocolate bar macaroon gummies cheesecake marshmallow croissant`;
-  randomTitles = randomTitles.split(` `);
+let randomTitles = `cake lollipop wafer soufflé toffee tiramisu brownie pudding cake chocolate bar macaroon gummies cheesecake marshmallow croissant`;
+randomTitles = randomTitles.split(` `);
 
-  for (let i=1; i<=5; i++) {
-    let issue = {
-      title: randomTitles[Math.floor(Math.random()*randomTitles.length)],
-      body: ``
-    };
-    postToGithub(`POST`, `repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues`, issue, (error, body) => {
-      if (error) console.log(error);
-      console.log(`YEAH! Issue posted!`);
-    });
-  }
+function postToGitHubWithDelay(numOfIssuesLeftToPost) {
+  let waitTime = 3000;
+
+  setTimeout(function() {
+    if (numOfIssuesLeftToPost > 0) {
+      let now = Date.now();
+      console.log(numOfIssuesLeftToPost, now, moment.utc(now).local().toString());
+
+      let issue = {
+        title: randomTitles[Math.floor(Math.random()*randomTitles.length)],
+        body: ``
+      };
+
+      postToGithub(`POST`, `repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues`, issue, (error, body) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`YEAH! Issue posted!\n`);
+          postToGitHubWithDelay(numOfIssuesLeftToPost-1, waitTime);
+        }
+      });
+    } else {
+      console.log(`=== DONE ================`);
+    }
+  }, waitTime);
+}
+
+function postRandomIssues() {
+  postToGitHubWithDelay(50);
 }
 
 function formatGithubComment() {
